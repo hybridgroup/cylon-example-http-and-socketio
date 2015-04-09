@@ -1,0 +1,12 @@
+{
+  "name": "cylon-example-socketio",
+  "version": "0.0.1",
+
+  "private": true,
+
+  "dependencies": {
+    "cylon": "1.0.0",
+    "cylon-api-http": "0.2.0",
+    "cylon-api-socketio": "0.2.5"
+  }
+}

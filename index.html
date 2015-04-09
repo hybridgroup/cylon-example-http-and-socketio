@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Cylon.js + HTTP + Socket.IO Example</title>
+  </head>
+
+  <body>
+    <h1>Cylon.js + HTTP + Socket.IO Example</h1>
+
+    <div>
+      <button onClick="ping();">
+        Ping The Robot
+      </button>
+
+      <span>You've pinged the robot <strong id="count">0</strong> time(s).</span>
+    </div>
+
+    <p>
+      What you're seeing happening here:
+    </p>
+
+    <ul>
+      <li>when the button is clicked, a JS request is sent to the HTTP API to trigger the 'ping' command on the 'ping' device.</li>
+      <li>this causes the device to emit the 'ping' event.</li>
+      <li>the Socket.IO API pipes this event from Cylon down to the client, to then increment the counter</li>
+    </ul>
+
+    <script src="http://localhost:4000/socket.io/socket.io.js"></script>
+    <script>
+      var count = document.getElementById("count");
+
+      var socket = io("http://localhost:4000/api/robots/socketbot/devices/ping"),
+          times = 0;
+
+      socket.on('message', function(msg) {
+        console.log(msg);
+
+        times++;
+        count.innerHTML = times;
+      });
+
+      function ping() {
+        var req = new XMLHttpRequest();
+        req.open("get", "/api/robots/SocketBot/devices/ping/commands/ping", true);
+        req.send();
+      }
+    </script>
+  </body>
+</html>
