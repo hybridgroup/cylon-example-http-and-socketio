@@ -5,8 +5,8 @@
   "private": true,
 
   "dependencies": {
-    "cylon": "1.0.0",
-    "cylon-api-http": "0.2.0",
-    "cylon-api-socketio": "0.2.5"
+    "cylon": "~1.1.0",
+    "cylon-api-http": "0.3.0",
+    "cylon-api-socketio": "0.3.0"
   }
 }
